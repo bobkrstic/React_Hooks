@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 
 // component Todo
-function Todo({ todo, index, completeTodo, removeTodo }) {
+function Todo({ todo, index, removeTodo, completeTodo }) {
   return (
     <div className="todo">
       <div style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}>
@@ -23,9 +23,11 @@ function TodoForm({ addTodo }) {
   const handleSubmit = e => {
     e.preventDefault();
     if (!value) {
-      alert("need value");
+      alert("Please input your todo");
       return;
     }
+
+    // 'value' is passed to addTodo, and will be read as 'userInputValue' for better understanding
     addTodo(value);
     setValue("");
   };
@@ -64,8 +66,9 @@ function App() {
     }
   ]);
 
-  const addTodo = text => {
-    const newTodos = [...todos, { text }];
+  // 'userInputValue' is the 'value' from the input field
+  const addTodo = userInputValue => {
+    const newTodos = [...todos, { text: userInputValue }];
     setTodos(newTodos);
   };
 
