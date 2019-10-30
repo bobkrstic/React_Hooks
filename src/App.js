@@ -4,13 +4,12 @@ import "./App.css";
 // component Todo
 function Todo({ todo, index, completeTodo, removeTodo }) {
   return (
-    <div
-      className="todo"
-      style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
-    >
-      {todo.text}
+    <div className="todo">
+      <div style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}>
+        {todo.text}
+      </div>
       <div>
-        <button onClick={() => completeTodo(index)}>Complete</button>
+        <button onClick={() => completeTodo(index)}>Complete</button>{" "}
         <button onClick={() => removeTodo(index)}> X </button>
       </div>
     </div>
@@ -23,7 +22,10 @@ function TodoForm({ addTodo }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (!value) return;
+    if (!value) {
+      alert("need value");
+      return;
+    }
     addTodo(value);
     setValue("");
   };
@@ -54,6 +56,10 @@ function App() {
     },
     {
       text: "Study react.js",
+      isCompleted: false
+    },
+    {
+      text: "Soccer game at 8pm",
       isCompleted: false
     }
   ]);
