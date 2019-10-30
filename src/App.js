@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 
+// component Todo
 function Todo({ todo, index, completeTodo, removeTodo }) {
   return (
     <div
@@ -16,6 +17,7 @@ function Todo({ todo, index, completeTodo, removeTodo }) {
   );
 }
 
+// component TodoForm
 function TodoForm({ addTodo }) {
   const [value, setValue] = useState("");
 
@@ -39,6 +41,7 @@ function TodoForm({ addTodo }) {
   );
 }
 
+// our main App component
 function App() {
   const [todos, setTodos] = useState([
     {
